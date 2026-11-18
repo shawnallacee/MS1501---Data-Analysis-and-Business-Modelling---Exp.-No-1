@@ -71,11 +71,11 @@ analysis for data-cleaning and preprocessing purposes.
   `df.columns`              Lists column names in the DataFrame.  
 
 ## Program & Output
-import matplotlib.pyplot as plt
-import pandas as pd
-import seaborn as sns
-data=sns.load_dataset('tips')
-print(data)
+import matplotlib.pyplot as plt  
+import pandas as pd  
+import seaborn as sns  
+data=sns.load_dataset('tips')  
+print(data)  
 
 <img width="850" height="420" alt="image" src="https://github.com/user-attachments/assets/faa22b68-1e92-478a-9d22-44a957b829ea" />
 
