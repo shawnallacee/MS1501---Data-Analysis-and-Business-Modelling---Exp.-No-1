@@ -71,13 +71,64 @@ analysis for data-cleaning and preprocessing purposes.
   `df.columns`              Lists column names in the DataFrame.  
 
 ## Program & Output
-import matplotlib.pyplot as plt  
+# Import Essential Python Libraries  
 import pandas as pd  
+import numpy as np  
+import matplotlib.pyplot as plt  
 import seaborn as sns  
-data=sns.load_dataset('tips')  
-print(data)  
 
-<img width="850" height="420" alt="image" src="https://github.com/user-attachments/assets/faa22b68-1e92-478a-9d22-44a957b829ea" />
+# Load the Dataset  
+file_path = 'heartdisease.csv'  
+df = pd.read_csv(file_path)  
+
+print("--- 1. Initial Dataset Loaded Successfully ---")  
+print(f"Dataset Shape (Rows, Columns): {df.shape}\n")  
+  
+# View Dataset Structure, Data Types, and Memory Usage  
+print("--- 2. Dataset Information (`df.info()`) ---")  
+print(df.info())  
+print("\nColumn Data Types (`df.dtypes`):")  
+print(df.dtypes)
+print(f"\nList of Columns (`df.columns`): {list(df.columns)}")  
+
+# Check for Missing Values and Duplicates  
+print("\n--- 3. Checking for Missing Values and Duplicates ---")  
+missing_values = df.isnull().sum()  
+print("Missing Values per Column:\n", missing_values[missing_values > 0] if missing_values.sum() > 0 else "No missing values found.")  
+
+duplicate_count = df.duplicated().sum()  
+print(f"Number of Duplicate Rows: {duplicate_count}")  
+
+# Handle Missing Values and Duplicates (Data Cleaning)  
+if duplicate_count > 0:  
+    df = df.drop_duplicates()  
+    print("Duplicate rows removed.")  
+
+# View Initial and Final Records  
+print("\n--- 4. Initial and Final Records ---")  
+print("First 5 Rows (`df.head()`):")  
+print(df.head())  
+
+print("\nLast 5 Rows (`df.tail()`):")  
+print(df.tail())  
+
+# Perform Data Summary Statistics  
+print("\n--- 5. Statistical Summary (`df.describe()`) ---")  
+print(df.describe())  
+
+print("\nMean of Numeric Columns (`df.mean()`):")  
+print(df.mean(numeric_only=True))  
+
+# Sort and Group Data Based on Key Attributes  
+print("\n--- 6. Sorting and Grouping Examples ---")  
+
+# Save the Cleaned Dataset for Further Analysis  
+cleaned_file_path = 'cleaned_heartdisease.csv'  
+df.to_csv(cleaned_file_path, index=False)  
+print(f"\n--- 7. Cleaned dataset successfully saved to '{cleaned_file_path}' ---")  
+
+<img width="1398" height="791" alt="image" src="https://github.com/user-attachments/assets/dbbf3467-4933-4dd4-93c9-444d82dd0ff3" />
+
 
 
 ## Result
